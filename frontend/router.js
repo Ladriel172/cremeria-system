@@ -51,7 +51,7 @@ const routes = [
 
 // Usar hash mode para GitHub Pages
 const router = createRouter({
-  history: createWebHashHistory(),
+ history: createWebHashHistory('/cremeria-system/'),
   routes
 })
 
@@ -61,11 +61,11 @@ router.beforeEach((to, from, next) => {
   const user = JSON.parse(localStorage.getItem('user') || '{}')
 
   if (to.meta.requiresAuth && !token) {
-    next('/login')
+    window.location.href = '/cremeria-system/#/login'
   } else if (to.meta.role && user.rol !== to.meta.role) {
     next('/dashboard')
   } else if (to.path === '/login' && token) {
-    next('/dashboard')
+    window.location.href = '/cremeria-system/#/dashboard'
   } else {
     next()
   }
