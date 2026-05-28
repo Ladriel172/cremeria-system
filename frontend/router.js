@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
+
 import Login from './views/Login.vue'
 import Dashboard from './views/Dashboard.vue'
 import Productos from './views/Productos.vue'
@@ -49,24 +50,34 @@ const routes = [
   }
 ]
 
-// Usar hash mode para GitHub Pages
+// Router para GitHub Pages
 const router = createRouter({
- history: createWebHashHistory('/cremeria-system/'),
+  history: createWebHashHistory('/cremeria-system/'),
   routes
 })
 
-// Guard para rutas protegidas
+// Protección de rutas
 router.beforeEach((to, from, next) => {
   const token = localStorage.getItem('token')
   const user = JSON.parse(localStorage.getItem('user') || '{}')
 
+  // Si necesita login y no hay token
   if (to.meta.requiresAuth && !token) {
-    window.location.href = '/cremeria-system/#/login'
-  } else if (to.meta.role && user.rol !== to.meta.role) {
-    window.location.href = '/cremeria-system/#/dashboard'
-  } else if (to.path === '/login' && token) {
-    window.location.href = '/cremeria-system/#/dashboard'
-  } else {
+    next('/login')
+  }
+
+  // Si requiere admin y no es admin
+  else if (to.meta.role && user.rol !== to.meta.role) {
+    next('/dashboard')
+  }
+
+  // Si ya inició sesión y quiere volver al login
+  else if (to.path === '/login' && token) {
+    next('/dashboard')
+  }
+
+  // Continuar navegación
+  else {
     next()
   }
 })
