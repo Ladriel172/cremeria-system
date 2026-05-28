@@ -3,7 +3,7 @@
 // En producción: URL de Render
 
 const getAPIURL = () => {
-  return 'https://cremeria-api.onrender.com'
+  return 'https://cremeria-francis-api.onrender.com'
 }
 
 const API_URL = getAPIURL()
