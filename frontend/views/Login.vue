@@ -70,7 +70,7 @@ export default {
         this.error = null
 
         await authService.login(this.form.correo, this.form.password)
-        this.$router.push('/dashboard')
+        window.location.hash = '#/dashboard'
       } catch (err) {
         this.error = err.message
       } finally {
