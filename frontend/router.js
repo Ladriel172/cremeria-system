@@ -63,7 +63,7 @@ router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth && !token) {
     window.location.href = '/cremeria-system/#/login'
   } else if (to.meta.role && user.rol !== to.meta.role) {
-    next('/dashboard')
+    window.location.href = '/cremeria-system/#/dashboard'
   } else if (to.path === '/login' && token) {
     window.location.href = '/cremeria-system/#/dashboard'
   } else {
