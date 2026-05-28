@@ -1,17 +1,9 @@
 // API Service
 // En desarrollo: http://localhost:8000
-// En producción: URL de Render (debe ser configurada)
+// En producción: URL de Render
 
 const getAPIURL = () => {
-  if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-    return 'http://localhost:8000'
-  }
-  
-  // En producción, usar variable de entorno o URL por defecto
-  // Ejemplo: https://cremeria-api.onrender.com
-  return window.location.origin.includes('github.io') 
-    ? 'https://cremeria-francis-api.onrender.com' // Reemplazar con tu URL de Render
-    : 'http://localhost:8000'
+  return 'https://cremeria-api.onrender.com'
 }
 
 const API_URL = getAPIURL()
@@ -40,7 +32,7 @@ const api = {
 
     try {
       const response = await fetch(`${API_URL}${url}`, options)
-      
+
       if (response.status === 401) {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
