@@ -1,0 +1,8 @@
+.git
+database/*.db
+database/*.db-shm
+database/*.db-wal
+storage/logs/*.log
+logs/*.log
+public/img/products/*
+!public/img/products/.gitkeep

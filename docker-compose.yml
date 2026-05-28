@@ -1,0 +1,12 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=sqlite:///./cremeria.db
+      - SECRET_KEY=cremeria-francis-secure-key-2024
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app

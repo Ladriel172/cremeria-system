@@ -1,0 +1,13 @@
+{
+  "name": "cremeria-francis-frontend",
+  "version": "1.0.0",
+  "description": "Sistema POS Cremeria Francis - Frontend Vue 3",
+  "type": "module",
+  "scripts": {
+    "dev": "python -m http.server 3000 --directory .",
+    "serve": "python -m http.server 3000 --directory ."
+  },
+  "keywords": ["vue", "pos", "cremeria"],
+  "author": "",
+  "license": "MIT"
+}

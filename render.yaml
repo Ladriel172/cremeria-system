@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: cremeria-francis-api
+    env: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /health
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        value: sqlite:///./cremeria.db
+      - key: SECRET_KEY
+        value: cremeria-francis-secure-key-2024
